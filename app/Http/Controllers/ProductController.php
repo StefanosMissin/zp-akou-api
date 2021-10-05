@@ -37,7 +37,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -49,11 +49,11 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    {
         $product = Product::find($id);
         $product->update($request->all());
         return $product;
@@ -62,7 +62,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -70,15 +70,26 @@ class ProductController extends Controller
         return Product::destroy($id);
     }
 
-
-    /**
+     /**
      * Search for a name
      *
-     * @param  \App\Models\Product  $product
+     * @param  str  $name
      * @return \Illuminate\Http\Response
      */
     public function search($name)
     {
         return Product::where('name', 'like', '%'.$name.'%')->get();
     }
+
+    public function store_product(Request $request)
+    {
+        $post = new Product;
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->description = $request->description;
+        $post->save();
+        return redirect('/api/add_product')->with('status', 'Blog Post Form Data Has Been inserted');
+    }
+
+
 }
