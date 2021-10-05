@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,6 @@ Route::get('/', function () {
 });
 
 
+Route::get('/admin/add-product', [ProductController::class, 'form_product']);
+
+Route::post('/admin/product-store-form', [ProductController::class, 'store_product']);

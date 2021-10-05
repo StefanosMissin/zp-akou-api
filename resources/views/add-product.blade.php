@@ -24,23 +24,42 @@
             Εισαγωγή Παραμυθιού
         </div>
         <div class="card-body">
-        <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('/api/product_store')}}">
+        <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('/admin/product-store-form')}}">
         @csrf
             <div class="form-group mb-1">
-            <label for="title">Όνομα</label>
-            <input type="text" id="title" name="title" class="form-control" required="">
+                <label for="title">Όνομα</label>
+                <input type="text" id="name" name="name" class="form-control" required="">
             </div>
+
             <div class="form-group mb-1">
-            <label for="title">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-control" required="">
+                <label for="title">Slug</label>
+                <input type="text" id="slug" name="slug" class="form-control" required="">
             </div>
+            
             <div class="form-group mb-1">
-            <label for="title">Τιμή</label>
-            <input type="text" id="price" name="price" class="form-control" required="">
+                <label for="title">Τιμή</label>
+                <input type="text" id="price" name="price" class="form-control" required="">
             </div>
+            
             <div class="form-group mb-1">
-            <label for="exampleInputEmail1">Description</label>
-            <textarea id="description" name="description" class="form-control" required=""></textarea>
+                <label for="exampleInputEmail1">Description</label>
+                <textarea id="description" name="description" class="form-control" required=""></textarea>
+            </div>
+            
+            <div class="form-group mb-1">
+                <label for="category">Επιλογή Κατηγορίας:</label>
+                <select name="category" id="category">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-1">
+                <label for="writer_name">Επιλογή Αρθρογράφου:</label>
+                <select name="writer_name" id="writer_name">
+                    <option value="Κατερίνα">Κατερίνα</option>
+                    <option value="Άννα">Άννα</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Εισαγωγή</button>
         </form>

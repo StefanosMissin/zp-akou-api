@@ -81,14 +81,25 @@ class ProductController extends Controller
         return Product::where('name', 'like', '%'.$name.'%')->get();
     }
 
+
+    public function form_product()
+    {
+        return view('add-product');
+    }
+
     public function store_product(Request $request)
     {
         $post = new Product;
-        $post->title = $request->title;
+        $post->name = $request->name;
         $post->slug = $request->slug;
+        $post->price = $request->price;
         $post->description = $request->description;
+        $post->image_link = 'link';
+        $post->audio_link = 'alink';
+        $post->writer_name = $request->writer_name;
+        $post->category = $request->category;
         $post->save();
-        return redirect('/api/add_product')->with('status', 'Blog Post Form Data Has Been inserted');
+        return redirect('/admin/add-product')->with('status', 'Το παραμύθι έχει προστεθεί! ID παραμυθιού: ' . $post->id );
     }
 
 
